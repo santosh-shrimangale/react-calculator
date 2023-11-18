@@ -46,12 +46,7 @@ function reducer(state, { type, payload }) {
         }
       }
 
-    default: return {
-      ...state,
-      previousOperand: evaluate(state),
-      operation: payload.operation,
-      currentOperand: null
-    }
+ 
     case ACTIONS.CLEAR:
       return {}
     case ACTIONS.DELETE_DIGIT:
@@ -84,6 +79,12 @@ function reducer(state, { type, payload }) {
         previousOperand: null,
         operation: null,
         currentOperand: evaluate(state)
+      }
+      default: return {
+        ...state,
+        previousOperand: evaluate(state),
+        operation: payload.operation,
+        currentOperand: null
       }
   }
 
